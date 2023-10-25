@@ -1,0 +1,63 @@
+.navbar {
+    background-color: #222;
+    color: #fff;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: fixed;
+    width: 100%;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Asegurarse de que ocupa todo el ancho */
+}
+
+.hamburger-nav {
+    position: absolute;
+    left: 0; /* Posicionado completamente a la izquierda */
+    cursor: pointer;
+    font-size: 1.5em;
+    padding: 0 1rem; /* Añadir un poco de padding para dar espacio al ícono */
+}
+
+.navbar-logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    z-index: 1;
+}
+
+/* Estilos para la sidebar */
+.sidebar-menu {
+    position: absolute;
+    top: 100%; /* Alineado justo debajo del navbar */
+    left: 0; 
+    background-color: #333; 
+    width: 250px; /* Ajusta según lo necesites */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    height: 100vh; /* Ocupa toda la altura de la ventana */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 1rem;
+}
+
+.sidebar-menu a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin: 0.5rem 0;
+    width: 80%;  /* Ocupar todo el ancho del contenedor */
+    text-align: left;  /* Alinear el texto a la izquierda */
+}
+
+.sidebar-menu a i {
+    margin-right: 10px;  /* Espacio entre el ícono y el texto */
+}
+
+.sidebar-menu a:hover {
+    background-color: #444;
+}
