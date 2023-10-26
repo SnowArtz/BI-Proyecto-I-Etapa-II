@@ -1,0 +1,131 @@
+.contenedor-super-externo {
+    
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+.columna-izquierda {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenedor-externo {
+    width: 50vw;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: -20px 30px 15px rgba(0,0,0,0.3);
+    margin-top: 50px;
+}
+
+.imagen-confusion { /* Cambié la clase de .imagen-principal a .imagen-confusion para que coincida con el JS */
+    width: 80%;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+    transform-origin: center; /* Esto hace que la imagen gire alrededor de su centro */
+
+}
+
+@keyframes spin {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    100% {
+        transform: scale(1.1) rotate(360deg);
+    }
+}
+
+.imagen-confusion:hover {
+    animation: spin 3s linear infinite;
+}
+
+
+
+
+
+.display {
+    background-color: #f7f7f7;  /* Cambiado de rojo a un color más neutro */
+    width: 70%;
+    height: 40px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;  /* Cambiado de center para separar etiqueta y valor */
+    align-items: center;
+    padding: 0 15px;  /* Padding para los lados */
+    border: 1px solid #e0e0e0;  /* Borde sutil */
+    border-radius: 20px;  /* Bordes redondeados */
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);  /* Sombra sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.display-value {
+    color: #007bff;  /* Color azul para valores */
+    font-weight: bold;  /* Hacer los valores en negrita */
+}
+
+/* Aumentamos ligeramente el tamaño de los displays y su sombra al pasar el mouse por encima */
+.display:hover {
+    transform: scale(1.05);  /* Aumentamos el tamaño a un 105% de su tamaño original */
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);  /* Sombra más pronunciada */
+}
+
+/* Animación para el parpadeo */
+@keyframes blink {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+/* Aplicamos la animación al valor numérico al pasar el mouse por encima del display */
+.display:hover .display-value {
+    animation: blink 1s linear infinite;  /* Parpadeo continuo con una duración de 1 segundo */
+}
+
+.columna-derecha {
+    flex: 1;
+    padding: 20px;
+}
+
+.columna-derecha p {
+    text-align: justify; /* Centrará el texto en los párrafos */
+}
+
+.boton {
+    margin-top: 20px;
+    background-color: #007bff;  /* Cambiado a un azul */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;  /* Transición suave para el cambio de color */
+    border-radius: 20px;  /* Bordes redondeados */
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);  /* Sombra sutil */
+}
+
+.boton:hover {
+    background-color: #0056b3;  /* Color azul oscuro cuando pases el mouse por encima */
+}
+
+.boton:after {
+    content: " (Sube archivos .csv)";
+    display: none;  /* Oculto por defecto */
+    font-size: 0.8em;  /* Un poco más pequeño que el texto principal del botón */
+    color: #f8f9fa;  /* Color claro para que se lea contra el fondo oscuro */
+}
+
+.boton:hover:after {
+    display: inline;  /* Se muestra cuando pasas el mouse por encima del botón */
+}
