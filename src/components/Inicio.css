@@ -1,0 +1,130 @@
+.inicio-container {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .title {
+    font-size: 2.5em; /* Aumento del tamaño de la fuente */
+    color: #2c3e50; /* Un color más oscuro y sofisticado */
+    font-weight: bold;
+    margin-bottom: 15px; /* Aumento del margen inferior para dar más espacio */
+    margin-top: 50px; /* Aumento del margen superior para dar más espacio */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
+    text-align: center; /* Centrar el título */
+    letter-spacing: 1.5px; /* Espaciado entre letras para una mejor legibilidad */
+    transition: all 0.3s ease; /* Transición suave para cualquier cambio */
+    cursor: pointer; /* Cambio de cursor al pasar el mouse para interactividad */
+
+    /* Efecto de hover para interactividad */
+    &:hover {
+        color: #34495e; /* Cambio de color al pasar el mouse */
+        transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+    }
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* Asegura que los hijos de flex tengan la misma altura */
+    margin-bottom: 30px;
+}
+
+.top-image-container {
+    flex: 0.3;
+    display: flex; /* Añadido para centrar la imagen verticalmente */
+    align-items: center; /* Centra la imagen verticalmente */
+    justify-content: center; /* Centra la imagen horizontalmente */
+    margin-right: 20px;
+    margin-left: 80px;
+    height: 100%; /* Asegura que ocupe toda la altura del contenedor padre */
+}
+
+.top-image {
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.top-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.description {
+    flex: 0.7;
+    margin: 0 100px;
+    font-size: 18px;
+    color: #444;
+    text-align: justify;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex; /* Añadido para centrar el contenido verticalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    font-family: 'Roboto', sans-serif; /* Establece la fuente a Roboto */
+    font-weight: 500; /* Establece el peso de la fuente a medio */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para el efecto de levitación y la sombra */
+
+    /* Efecto de hover (levitación) */
+    &:hover {
+        transform: translateY(-5px); /* Mueve el elemento ligeramente hacia arriba */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada al pasar el mouse */
+    }
+
+}
+
+
+
+  
+.bottom-images-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px; /* Aumentar el espacio superior para dar más respiro */
+    padding: 0 20px; /* Añadir un poco de padding a los lados para evitar que las imágenes toquen los bordes */
+}
+
+.image-item {
+    flex: 1;
+    margin: 0 15px; /* Aumentar el margen entre imágenes */
+    text-align: center;
+    background-color: #f9f9f9; /* Añadir un fondo claro para destacar cada imagen y su descripción */
+    border-radius: 15px; /* Bordes más redondeados */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada para darle profundidad */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave para cualquier cambio */
+    
+    /* Efecto de hover para interactividad */
+    &:hover {
+        transform: translateY(-5px); /* Efecto de levitación al pasar el mouse */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al pasar el mouse */
+    }
+}
+
+.image-item img {
+    width: 60%; /* Aumentar un poco el ancho de las imágenes */
+    border-radius: 15px; /* Bordes más redondeados para que coincida con el contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Transición suave para el efecto de zoom */
+
+    /* Efecto de zoom al pasar el mouse */
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.image-item p {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #555;
+    font-weight: 500;
+    font-family: 'Lato', sans-serif; /* Establece la fuente a Lato */
+    font-weight: 700;
+}
+
+
+  
