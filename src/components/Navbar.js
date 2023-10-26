@@ -25,18 +25,18 @@ function Navbar() {
                 <div className="hamburger-nav" ref={hamburgerRef} onClick={() => setMenuOpen(!menuOpen)}>
                     ☰
                 </div>
-                <span className="navbar-logo">Mi Logo</span>
+                <span className="navbar-logo">UNFPA</span>
             </div>
             {menuOpen && (
                 <div className="sidebar-menu" ref={sidebarRef}>
-                    <a href="#inicio" onClick={() => setMenuOpen(false)}>
+                    <a href="/" onClick={() => setMenuOpen(false)}>
                         <i className="fa fa-home" aria-hidden="true"></i> Inicio
                     </a>
-                    <a href="#acerca" onClick={() => setMenuOpen(false)}>
-                        <i className="fa fa-info-circle" aria-hidden="true"></i> Acerca de
+                    <a href="/predecir" onClick={() => setMenuOpen(false)}>
+                        <i className="fa fa-forward" aria-hidden="true"></i> Predecir
                     </a>
-                    <a href="#contacto" onClick={() => setMenuOpen(false)}>
-                        <i className="fa fa-envelope" aria-hidden="true"></i> Contacto
+                    <a href="/entrenar" onClick={() => setMenuOpen(false)}>
+                        <i className="fa fa-refresh" aria-hidden="true"></i> Entrenar
                     </a>
                 </div>
             )}

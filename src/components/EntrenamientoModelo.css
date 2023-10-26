@@ -21,6 +21,7 @@
 
 .contenedor-externo {
     width: 50vw;
+    height: 37vw;
     background-color: #ffffff;
     display: flex;
     justify-content: center;
@@ -29,6 +30,8 @@
     box-sizing: border-box;
     box-shadow: -20px 30px 15px rgba(0,0,0,0.3);
     margin-top: 50px;
+    border-radius: 3%;
+
 }
 
 .imagen-confusion { /* Cambié la clase de .imagen-principal a .imagen-confusion para que coincida con el JS */
@@ -49,7 +52,7 @@
 }
 
 .imagen-confusion:hover {
-    animation: spin 3s linear infinite;
+    transform: scale(1.05);  /* Aumentamos el tamaño a un 105% de su tamaño original */
 }
 
 
@@ -107,7 +110,8 @@
     margin-top: 20px;
     background-color: #007bff;  /* Cambiado a un azul */
     color: white;
-    padding: 10px 20px;
+    padding: 20px 80px;
+    font-size: medium;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;  /* Transición suave para el cambio de color */

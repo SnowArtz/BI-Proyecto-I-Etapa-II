@@ -4,8 +4,17 @@ import DALEE1 from './assets/DALEE1.png';
 import ods6 from './assets/OD6-IN.png';
 import ods7 from './assets/OD7-IN.png';
 import ods16 from './assets/OD17-IN.png';
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate para la navegación
 
 const Inicio = () => {
+
+
+  const navigate = useNavigate();
+
+  const redirectToPredecir = () => {
+    navigate('/predecir');
+  };
+
   return (
     <div className="inicio-container">
       <h1 className="title">Clasificador de textos según su ODS</h1>
@@ -21,21 +30,32 @@ const Inicio = () => {
       <div className="bottom-images-container">
         <div className="image-item">
           <img src={ods6} alt="ODS 6" />
+          <div className='snow'>
           <p>Asegurar la disponibilidad y gestión sostenible del agua y
 el saneamiento para todos</p>
+</div>
         </div>
         <div className="image-item">
           <img src={ods7} alt="ODS 7" />
+          <div className='snow'>
           <p>Garantizar el acceso a una energía asequible,
 segura, sostenible y moderna para todos</p>
+</div>
+
         </div>
         <div className="image-item">
           <img src={ods16} alt="ODS 16" />
+          <div className='snow'>
           <p>Promover sociedades pacíficas e inclusivas para
-el desarrollo sostenible, facilitar el acceso a la justicia para todos y crear instituciones eficaces,
-responsables e inclusivas a todos los niveles</p>
-        </div>
+el desarrollo sostenible.</p>
       </div>
+      
+        </div>
+        
+      </div>
+      <div className="botones-prada">
+      <button className="btn2 btn-azul" onClick={redirectToPredecir}>Predecir</button>
+                    </div>
     </div>
   );
 }
