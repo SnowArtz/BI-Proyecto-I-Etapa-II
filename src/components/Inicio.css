@@ -12,7 +12,7 @@
     color: #2c3e50; /* Un color más oscuro y sofisticado */
     font-weight: bold;
     margin-bottom: 15px; /* Aumento del margen inferior para dar más espacio */
-    margin-top: 50px; /* Aumento del margen superior para dar más espacio */
+    margin-top: 59.3px; /* Aumento del margen superior para dar más espacio */
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Sombra sutil para darle profundidad */
     text-align: center; /* Centrar el título */
     letter-spacing: 1.5px; /* Espaciado entre letras para una mejor legibilidad */
@@ -76,7 +76,7 @@
 .bottom-images-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 40px; /* Aumentar el espacio superior para dar más respiro */
+    margin-top: 10px; /* Aumentar el espacio superior para dar más respiro */
     padding: 0 20px; /* Añadir un poco de padding a los lados para evitar que las imágenes toquen los bordes */
 }
 

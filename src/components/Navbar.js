@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './Navbar.css';
+import logoODS from './assets/onu3.png';
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -25,7 +26,9 @@ function Navbar() {
                 <div className="hamburger-nav" ref={hamburgerRef} onClick={() => setMenuOpen(!menuOpen)}>
                     ☰
                 </div>
-                <span className="navbar-logo">UNFPA</span>
+                <span className="navbar-logo">
+                <img src={logoODS} alt="Logo ONU" style={{ width: '30%', height: '100%' }} />
+            </span>
             </div>
             {menuOpen && (
                 <div className="sidebar-menu" ref={sidebarRef}>

@@ -21,12 +21,11 @@
 
 .contenedor-externo {
     width: 50vw;
-    height: 37vw;
+    height: 39vw;
     background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     box-sizing: border-box;
     box-shadow: -20px 30px 15px rgba(0,0,0,0.3);
     margin-top: 50px;
@@ -107,10 +106,12 @@
 }
 
 .boton {
+    width: 48%;
+
     margin-top: 20px;
     background-color: #007bff;  /* Cambiado a un azul */
     color: white;
-    padding: 20px 80px;
+    padding: 12px 20px;  /* Aumentar el padding vertical para hacerlos más altos */
     font-size: medium;
     border: none;
     cursor: pointer;
@@ -119,12 +120,15 @@
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);  /* Sombra sutil */
 }
 
-.boton:hover {
+.gris{  
+    background-color: #aaa;
+}
+
+.boton-hover:hover {
     background-color: #0056b3;  /* Color azul oscuro cuando pases el mouse por encima */
 }
 
 .boton:after {
-    content: " (Sube archivos .csv)";
     display: none;  /* Oculto por defecto */
     font-size: 0.8em;  /* Un poco más pequeño que el texto principal del botón */
     color: #f8f9fa;  /* Color claro para que se lea contra el fondo oscuro */

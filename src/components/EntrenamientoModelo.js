@@ -1,56 +1,123 @@
 import React, { useState, useEffect } from 'react';
 import './EntrenamientoModelo.css';
-import confusion from './assets/confus.png';
-import miFondo from './assets/miFondo.png';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+
+
 
 function EntrenamientoModelo() {
-    // Inicializar el estado con valores por defecto
     const [metrics, setMetrics] = useState({
         f1_score: 0,
         precision: 0,
         recall: 0
     });
+    const [isProcessing, setIsProcessing] = useState(false);
 
-    // Usar useEffect para obtener los datos de la API cuando el componente se monte
     useEffect(() => {
-        // Definir una función asincrónica dentro de useEffect
         const fetchData = async () => {
             try {
                 const response = await fetch("http://127.0.0.1:8000/metrics");
                 const data = await response.json();
-                setMetrics(data); // Actualizar el estado con los datos obtenidos
+                setMetrics(data);
             } catch (error) {
                 console.error("Error al obtener los datos de la API:", error);
             }
         };
+        fetchData();
+    }, []);
 
-        fetchData(); // Ejecutar la función
-    }, []); // El arreglo vacío [] significa que useEffect se ejecutará solo una vez, cuando el componente se monte
+    const [alertOpen, setAlertOpen] = useState(false);
 
+    const [confusionUrl, setConfusionUrl] = useState("http://127.0.0.1:8000/confusion_matrix?timestamp=" + Date.now());
+
+
+    
+    const handleFileChangeAndUpload = async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        setIsProcessing(true);
+
+        try {
+            const response = await fetch('http://127.0.0.1:8000/retrain', {
+                method: 'POST',
+                body: formData,
+            });
+
+            const data = await response.json();
+            if (data.message) {
+                setAlertOpen(true);
+            }
+
+            // Opcional: puedes refrescar las métricas y la matriz de confusión aquí si lo consideras necesario.
+
+        } catch (error) {
+            console.error('Error al enviar el archivo:', error);
+        }
+
+        setIsProcessing(false);
+    // Refrescar la imagen de la matriz de confusión
+        setConfusionUrl("http://127.0.0.1:8000/confusion_matrix?timestamp=" + Date.now());
+        const response = await fetch("http://127.0.0.1:8000/metrics");
+        const data = await response.json();
+        setMetrics(data); // Actualizar el estado con los datos obtenidos
+    };
+
+
+    
     return (
         <div className='contenedor-super-externo'>
             <div className='contenedor-externo'>
                 <div className="columna-izquierda">
-                    <img src={confusion} alt="confusion" className="imagen-confusion" /> 
+                    <img src={confusionUrl} alt="confusion" className="imagen-confusion" />
+
                     <div className="display">
-                        <span>F1 Score:</span> <span className="display-value">{metrics.f1_score}</span>
+                        <span>F1 Score:</span> <span className="display-value">{Math.round(metrics["f1-score"]*1000)/1000}</span>
                     </div>
                     <div className="display">
-                        <span>Precision:</span> <span className="display-value">{metrics.precision}</span>
+                        <span>Precision:</span> <span className="display-value">{Math.round(metrics["precision"]*1000)/1000}</span>
                     </div>
                     <div className="display">
-                        <span>Recall:</span> <span className="display-value">{metrics.recall}</span>
+                        <span>Recall:</span> <span className="display-value">{Math.round(metrics["recall"]*1000)/1000}</span>
                     </div>
                 </div>
                 <div className="columna-derecha">
                     <h1>Entrenamiento del Modelo</h1>
                     <p>Se optó por el algoritmo de ensemble conocido como RandomForest debido a sus múltiples ventajas: combina varios árboles de decisión para proporcionar predicciones más precisas, es robusto, tiene una excelente capacidad para manejar el overfitting y permite determinar la importancia de las características. Para su implementación, se utilizó el modelo RandomForestClassifier de la biblioteca sklearn.</p>
                     <p>Con el objetivo de maximizar la eficacia del modelo, se llevó a cabo una búsqueda en malla para optimizar hiperparámetros como el número de árboles, profundidad máxima y mínimas muestras para dividir, entre otros. El rendimiento del modelo se midió utilizando el F1 score. Una vez determinados los hiperparámetros ideales, se evaluó el rendimiento del modelo utilizando un conjunto de datos no etiquetados.</p>
-                    <button className="boton">Reentrenar modelo</button>
+                    <input 
+                        type="file" 
+                        accept=".xlsx" 
+                        id="fileInput" 
+                        style={{display: 'none'}} 
+                        onChange={handleFileChangeAndUpload}
+                    />
+                    <button className={`boton ${isProcessing?'gris':'boton-hover'}`} onClick={() => document.getElementById('fileInput').click()}>
+                            {isProcessing ? (
+                                <div className='holahola'>
+                                    <p className='proccc'> Procesando </p><div className="loader"></div>
+                                </div>
+                            ) : "Subir .xlsx"}
+                        </button>
                 </div>
             </div>
+            <Snackbar
+                open={alertOpen}
+                autoHideDuration={6000}
+                onClose={() => setAlertOpen(false)}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                >
+                <Alert onClose={() => setAlertOpen(false)} severity="info" variant="filled">
+                    Model retrained!
+                </Alert>
+            </Snackbar>
         </div>
+        
     );
+
 }
 
 export default EntrenamientoModelo;
